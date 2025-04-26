@@ -2,10 +2,20 @@ import React, { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import heroImg from '../assets/bg-hero.png';
 import FeatureCard from '../components/FeatureCard/FeatureCard';
+import { useNavigate } from 'react-router-dom';
+import Modal from '../components/Modal/Modal';
+import Login from './Auth/Login';
+import SignUp from './Auth/SignUp';
+
 
 function LandingPage() {
-  const [openAuthModal, setOpenAuthModal] = useState(false)
+  const navigate = useNavigate();
+  const [openAuthModal, setOpenAuthModal] = useState(true)
   const [currentPage, setCurrentPage] = useState('login')
+
+  const handleCallToAction = () => {
+
+  }
 
   return (
     <div className='w-full min-h-screen bg-white'>
@@ -33,14 +43,15 @@ function LandingPage() {
             </p>
             <button
               className='bg-black text-sm font-semibold text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors cursor-pointer'
+              onClick={handleCallToAction}
             >
               Get Started
             </button>
           </div>
           <div className='w-full md:w-1/2'>
-            <img 
-            src={heroImg} alt="Hero Image" 
-            className='w-full rounded-lg'
+            <img
+              src={heroImg} alt="Hero Image"
+              className='w-full rounded-lg'
             />
           </div>
         </section>
@@ -50,17 +61,17 @@ function LandingPage() {
             Features That Make You Shine
           </h2>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-            <FeatureCard 
-              title='Easy Editing' 
-              description='Update your resume with live preview and instant formating' 
+            <FeatureCard
+              title='Easy Editing'
+              description='Update your resume with live preview and instant formating'
             />
-            <FeatureCard 
-              title='Beautiful Templates' 
-              description='Choose from modern, professional templates that are easy to customize' 
+            <FeatureCard
+              title='Beautiful Templates'
+              description='Choose from modern, professional templates that are easy to customize'
             />
-            <FeatureCard 
-              title='One-Click Export' 
-              description='Download your resume instantly as a high quality PDF with one click' 
+            <FeatureCard
+              title='One-Click Export'
+              description='Download your resume instantly as a high quality PDF with one click'
             />
           </div>
         </section>
@@ -69,6 +80,20 @@ function LandingPage() {
           Made with ❤️ by Omar Bin Saleh
         </section>
       </div>
+
+      <Modal
+        isOpen={openAuthModal}
+        onClose={() => {
+          setOpenAuthModal(false)
+          setCurrentPage('login')
+        }}
+        hideHeader
+      >
+         <div>
+          {currentPage === 'login' && <Login setCurrentPage={setCurrentPage} />}
+          {currentPage === 'signUp' && <SignUp setCurrentPage={setCurrentPage} />}
+         </div>
+      </Modal>
     </div>
   )
 }
