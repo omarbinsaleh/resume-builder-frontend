@@ -36,7 +36,7 @@ const Modal = ({
        <button 
           type='button' 
           onClick={onClose} 
-          className='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 flex items-center justify-center absolute top-3.5 right-3.5'
+          className='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 flex items-center justify-center absolute top-3.5 right-3.5 cursor-pointer'
        >
           <RxCross2 className='' />
        </button>

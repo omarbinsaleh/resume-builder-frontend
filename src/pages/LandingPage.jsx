@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { toast } from 'react-hot-toast'
-import heroImg from '../assets/bg-hero.png';
+import heroImg from '../assets/bg-hero.png'
 import FeatureCard from '../components/FeatureCard/FeatureCard';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../components/Modal/Modal';
@@ -10,7 +10,7 @@ import SignUp from './Auth/SignUp';
 
 function LandingPage() {
   const navigate = useNavigate();
-  const [openAuthModal, setOpenAuthModal] = useState(true)
+  const [openAuthModal, setOpenAuthModal] = useState(false)
   const [currentPage, setCurrentPage] = useState('login')
 
   const handleCallToAction = () => {
