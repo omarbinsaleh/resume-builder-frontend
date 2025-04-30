@@ -51,7 +51,7 @@ function LandingPage() {
           <div className='w-full md:w-1/2'>
             <img
               src={heroImg} alt="Hero Image"
-              className='w-full rounded-lg max-h-[350px]'
+              className='w-full rounded-lg max-h-[400px] '
             />
           </div>
         </section>
