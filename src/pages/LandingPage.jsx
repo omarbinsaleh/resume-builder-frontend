@@ -77,7 +77,7 @@ function LandingPage() {
         </section>
 
         <section className='text-sm bg-gray-50 text-secondary text-center p-5 mt-5'>
-          Made with ❤️ by Omar Bin Saleh
+          Developed with ❤️ by <a className='text-blue-800 font-semibold hover:underline' href="https://github.com/omarbinsaleh" target="_blank" rel="noopener noreferrer">Omar Bin Saleh</a>
         </section>
       </div>
 

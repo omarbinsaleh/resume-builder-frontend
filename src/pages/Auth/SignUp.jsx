@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { validateEmail } from '../../utils/helper';
 import Input from '../../components/Inputs/Input';
 import toast from 'react-hot-toast';
+import PrifilePhotoSelector from '../../components/Inputs/PrifilePhotoSelector';
 
 const SignUp = ({setCurrentPage}) => {
   const [profilePic, setProfilePic] = useState(null);
@@ -71,6 +72,7 @@ const SignUp = ({setCurrentPage}) => {
       </p>
 
       <form onSubmit={handleSignUp}>
+        <PrifilePhotoSelector image={profilePic} setImage={setProfilePic} />
         <div>
           <Input value={fullName} onChange={({target}) => setFullName(target.value)} label={'Full Name'} placeholder='Omar Bin Saleh' type='text' errorMessage={fullNameError} />
           <Input value={email} onChange={({target}) => setEmail(target.value)} label='Email Address' placeholder='omarbinsaleh@gmail.com' type='text' errorMessage={emailError} />
