@@ -18,6 +18,7 @@ const PrifilePhotoSelector = ({ image, setImage, preview, setPreview }) => {
             setPreview(preview);
          }
          setPreviewUrl(preview);
+         console.log(preview);
       };
    };
 
@@ -61,7 +62,7 @@ const PrifilePhotoSelector = ({ image, setImage, preview, setPreview }) => {
                className='w-8 h-8 flex items-center justify-center rounded-full bg-red-500 text-white absolute -bottom-1 -right-1 cursor-pointer'
                onClick={handleRemoveImage}
                >
-                  <FiTrash />
+                  <FiTrash2 />
                </button>
             </div>
          )}
