@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { FiUser, FiUpload, FiTrash2, FiTrash } from 'react-icons/fi'
 
-const PrifilePhotoSelector = ({ image, setImage, preview, setPreview }) => {
+const ProfilePhotoSelector = ({ image, setImage, preview, setPreview }) => {
    const inputRef = useRef(null);
    const [previewUrl, setPreviewUrl] = useState(null);
 
@@ -70,4 +70,4 @@ const PrifilePhotoSelector = ({ image, setImage, preview, setPreview }) => {
    )
 }
 
-export default PrifilePhotoSelector
+export default ProfilePhotoSelector;

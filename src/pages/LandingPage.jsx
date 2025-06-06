@@ -30,7 +30,7 @@ function LandingPage() {
         </header>
 
         {/* Hero Content */}
-        <section className='flex flex-col md:flex-row items-center'>
+        <section className='container mx-auto flex flex-col md:flex-row items-center'>
           <div className='w-full md:w-1/2 pr-4 mb-8 md:mb-0'>
             <h1 className='text-5xl font-bold mb-6 leading-tight'>
               Build Your {''}
