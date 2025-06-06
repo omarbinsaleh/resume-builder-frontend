@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import heroImg from '../assets/bg-hero.png'
 import FeatureCard from '../components/FeatureCard/FeatureCard';
@@ -6,16 +6,27 @@ import { useNavigate } from 'react-router-dom';
 import Modal from '../components/Modal/Modal';
 import Login from './Auth/Login';
 import SignUp from './Auth/SignUp';
+import { UserContext } from '../context/userContext';
+import Spinner from '../components/Spinner/Spinner';
+import ProfileCard from '../components/Cards/ProfileCard';
 
 
 function LandingPage() {
+  const { user, loading } = useContext(UserContext);
   const navigate = useNavigate();
   const [openAuthModal, setOpenAuthModal] = useState(false)
   const [currentPage, setCurrentPage] = useState('login')
 
+  // Handle Call to Action button click
   const handleCallToAction = () => {
-
+    if (user) {
+      navigate('/dashboard');
+    } else {
+      setOpenAuthModal(true);
+    }
   }
+
+  console.log(user);
 
   return (
     <div className='w-full min-h-screen bg-white'>
@@ -23,10 +34,18 @@ function LandingPage() {
         {/* Header */}
         <header className='flex justify-between items-center mb-16'>
           <div className='text-xl font-bold'>Resume Builder</div>
+
+          {user 
+          ? 
+          <ProfileCard profile={user} /> 
+          : 
           <button
             className='bg-purple-100 text-sm font-semibold text-black px-7 py-2.5 rounded-lg hover:bg-gray-800 hover:text-white transition-colors cursor-pointer'
             onClick={() => setOpenAuthModal(true)}
-          >Login / Sign Up</button>
+          >
+            Login / Sign Up
+          </button>}
+
         </header>
 
         {/* Hero Content */}
