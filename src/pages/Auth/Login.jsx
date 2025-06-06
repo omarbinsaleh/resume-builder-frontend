@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router';
 import Input from '../../components/Inputs/Input';
 import toast from 'react-hot-toast';
 import { validateEmail } from '../../utils/helper';
+import axiosInstance from '../../utils/axiosInstance';
+import { API_PATH } from '../../utils/apiPath';
+import { UserContext } from '../../context/userContext';
 
 const Login = ({setCurrentPage}) => {
   const [email, setEmail] = useState('');
@@ -10,6 +13,7 @@ const Login = ({setCurrentPage}) => {
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
   const navigate = useNavigate();
+  const {updateUser, user, loading} = useContext(UserContext)
 
   // Handle the Login Form Submit
   const handleLogin = async (e) => {
@@ -40,13 +44,26 @@ const Login = ({setCurrentPage}) => {
 
     // call the login api
     try {
-      toast.success("User logged in successfully")
-      setEmail('');
-      setPassword('');
+      console.log({email, password});
+      const response = await axiosInstance.post(API_PATH.AUTH.LOGIN, { email, password })
+      console.log(response)
+
+      const token = response.data.user.token;
+      const user = response.data.user;
+
+      if (token) {
+        localStorage.setItem("token", token);
+        updateUser(user);
+        toast.success("User logged in successfully")
+        setEmail('');
+        setPassword('');
+        navigate('/dashboard');
+      }
     } catch (error) {
-      
+      console.log(error)
     }
   }
+
 
   return (
     <div className='w-[90vw] md:w-[33vw] p-7 flex flex-col justify-center'>
